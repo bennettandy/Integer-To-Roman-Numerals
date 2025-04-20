@@ -5,13 +5,18 @@ import androidx.compose.runtime.snapshotFlow
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.avsoftware.integertoromannumerals.roman.integerToRoman
+import dagger.hilt.InstallIn
+import dagger.hilt.android.components.ActivityComponent
+import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.FlowPreview
 import kotlinx.coroutines.flow.debounce
 import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.launch
+import javax.inject.Inject
 
 @OptIn(FlowPreview::class)
-class RomanConverterViewModel : ViewModel() {
+@HiltViewModel
+class RomanConverterViewModel @Inject constructor() : ViewModel() {
     val inputState = mutableStateOf("")
     val outputState = mutableStateOf("")
 
