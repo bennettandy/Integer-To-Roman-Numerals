@@ -1,9 +1,24 @@
 [versions]
-agp = "8.9.0"
-kotlin = "2.0.21"
+agp = "8.9.1"
+kotlin = "2.1.20"
 coreKtx = "1.16.0"
 junit = "4.13.2"
 junitVersion = "1.2.1"
+
+## H
+hilt = "2.56.1"
+
+## K
+kotlin-parcelize = "2.0.0" # aligns with Kotlin version
+ksp = "2.1.20-1.0.31" # aligns with Kotlin version
+kover = "0.9.1"
+
+## O
+orbitVersion = "9.0.0"
+
+## T
+timber = "5.0.1"
+
 espressoCore = "3.6.1"
 lifecycleRuntimeKtx = "2.8.7"
 activityCompose = "1.10.1"
@@ -25,8 +40,25 @@ androidx-ui-test-manifest = { group = "androidx.compose.ui", name = "ui-test-man
 androidx-ui-test-junit4 = { group = "androidx.compose.ui", name = "ui-test-junit4" }
 androidx-material3 = { group = "androidx.compose.material3", name = "material3" }
 
+## H
+hilt-android = { module = "com.google.dagger:hilt-android", version.ref = "hilt" }
+hilt-compiler = { module = "com.google.dagger:hilt-compiler", version.ref = "hilt" }
+
+## O
+orbit-compose = { module = "org.orbit-mvi:orbit-compose", version.ref = "orbitVersion" }
+orbit-core = { module = "org.orbit-mvi:orbit-core", version.ref = "orbitVersion" }
+orbit-test = { module = "org.orbit-mvi:orbit-test", version.ref = "orbitVersion" }
+orbit-viewmodel = { module = "org.orbit-mvi:orbit-viewmodel", version.ref = "orbitVersion" }
+
+## T
+timber = { module = "com.jakewharton.timber:timber", version.ref = "timber" }
+
+
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }
 kotlin-android = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
 kotlin-compose = { id = "org.jetbrains.kotlin.plugin.compose", version.ref = "kotlin" }
-
+kover-coverage = { id = "org.jetbrains.kotlinx.kover", version.ref = "kover" }
+ksp = { id = "com.google.devtools.ksp", version.ref = "ksp" }
+kotlin-parcelize = { id = "org.jetbrains.kotlin.plugin.parcelize", version.ref = "kotlin-parcelize" }
+hilt-plugin = { id = "com.google.dagger.hilt.android", version.ref = "hilt" }
