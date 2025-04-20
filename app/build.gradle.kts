@@ -5,6 +5,7 @@ plugins {
     alias(libs.plugins.kover.coverage)
     alias(libs.plugins.ksp)
     alias(libs.plugins.hilt.plugin)
+    alias(libs.plugins.kotlin.parcelize)
 }
 
 android {
@@ -52,6 +53,11 @@ dependencies {
     implementation(libs.androidx.ui.graphics)
     implementation(libs.androidx.ui.tooling.preview)
     implementation(libs.androidx.material3)
+
+    // Orbit
+    implementation(libs.orbit.core)
+    implementation(libs.orbit.viewmodel)
+
 
     // timber
     implementation(libs.timber)
