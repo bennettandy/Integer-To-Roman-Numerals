@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">Integer to Roman Numerals</string>
+    <string name="enter_an_integer">Enter an integer:</string>
+    <string name="roman_numeral">Roman numeral:</string>
+</resources>
