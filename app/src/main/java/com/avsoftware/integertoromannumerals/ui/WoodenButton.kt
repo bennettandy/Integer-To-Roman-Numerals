@@ -24,18 +24,18 @@ fun WoodenButton(
     isFlippedVertically: Boolean = false
 ) {
     IconButton(
-        onClick = onClick, // Handle the click action
+        onClick = onClick,
         modifier = modifier
-            .size(90.dp) // Set the size of the button
-            .clip(CircleShape) // Ensure the button is circular
-            .shadow(elevation = 8.dp, shape = CircleShape) // Add drop shadow
+            .size(90.dp)
+            .clip(CircleShape)
+            .shadow(elevation = 16.dp, shape = CircleShape)
     ) {
         Image(
-            painter = painterResource(id = R.drawable.button_arrow), // Your button image
+            painter = painterResource(id = R.drawable.button_arrow),
             contentDescription = "Circular Button",
             modifier = Modifier
-                .fillMaxSize() // Ensure the image fills the button area
-                .clip(CircleShape) // Clip the image to a circle (redundant but ensures fit)
+                .fillMaxSize()
+                .clip(CircleShape)
                 .graphicsLayer {
                     // Flip vertically by setting scaleY to -1f
                     scaleY = if (isFlippedVertically) -1f else 1f
