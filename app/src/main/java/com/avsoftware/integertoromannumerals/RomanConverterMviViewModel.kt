@@ -3,10 +3,10 @@ package com.avsoftware.integertoromannumerals
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.avsoftware.integertoromannumerals.roman.DecimalToRomanUseCase
-import com.avsoftware.integertoromannumerals.roman.integerToRoman
 import dagger.hilt.android.lifecycle.HiltViewModel
 import org.orbitmvi.orbit.ContainerHost
 import org.orbitmvi.orbit.container
+import timber.log.Timber
 import javax.inject.Inject
 
 @HiltViewModel
@@ -21,30 +21,57 @@ class RomanConverterMviViewModel @Inject constructor(
     fun handleIntent(intent: RomanUiIntent) = intent {
         when (intent){
             is RomanUiIntent.UpdateDecimalText -> {
-                reduce {
-                    state.copy(
-                        decimalText = intent.decimalText,
-                        romanText = useCase(intent.decimalText)
-                    )
+                try {
+                    val decimalValue = intent.decimalString.toLong()
+                    reduce {
+                        state.copy(
+                            decimal = decimalValue,
+                            romanText = useCase(decimalValue)
+                        )
+                    }
+                }
+                catch (ex: NumberFormatException){
+                    Timber.e("Number format exception")
                 }
             }
 
             is RomanUiIntent.UpClicked -> intent {
                 reduce {
-                    val decimalText = ((state.decimalText.toIntOrNull() ?: 0) + 1).toString()
+                    val decimal = state.decimal + 1
                     state.copy(
-                        decimalText = decimalText,
-                        romanText = useCase(decimalText)
+                        decimal = decimal,
+                        romanText = useCase(decimal)
                     )
                 }
             }
 
             is RomanUiIntent.DownClicked -> intent {
                 reduce {
-                    val decimalText = ((state.decimalText.toIntOrNull() ?: 0) - 1).toString()
+                    val decimal = state.decimal - 1
                     state.copy(
-                        decimalText = decimalText,
-                        romanText = useCase(decimalText)
+                        decimal = decimal,
+                        romanText = useCase(decimal)
+                    )
+                }
+            }
+
+            is RomanUiIntent.ShowBottomSheet -> intent {
+                reduce {
+                    state.copy(showBottomSheet = true)
+                }
+            }
+
+            is RomanUiIntent.DismissBottomSheet -> intent {
+                reduce {
+                    state.copy(showBottomSheet = false)
+                }
+            }
+
+            is RomanUiIntent.ResetDecimal -> intent {
+                reduce {
+                    state.copy(
+                        showBottomSheet = false,
+                        decimal = 0L
                     )
                 }
             }
@@ -53,19 +80,24 @@ class RomanConverterMviViewModel @Inject constructor(
 }
 
 data class RomanUiState(
-    val decimalText: String,
-    val romanText: String
+    val decimal: Long,
+    val romanText: String,
+    val showBottomSheet: Boolean
 ){
     companion object {
         val default = RomanUiState(
-            decimalText = "",
-            romanText = ""
+            decimal = 0L,
+            romanText = "",
+            showBottomSheet = false
         )
     }
 }
 
 sealed interface RomanUiIntent {
-    data class UpdateDecimalText(val decimalText: String): RomanUiIntent
+    data class UpdateDecimalText(val decimalString: String): RomanUiIntent
     data object UpClicked: RomanUiIntent
     data object DownClicked: RomanUiIntent
+    data object DismissBottomSheet: RomanUiIntent
+    data object ShowBottomSheet: RomanUiIntent
+    data object ResetDecimal: RomanUiIntent
 }
