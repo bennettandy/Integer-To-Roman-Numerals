@@ -11,6 +11,7 @@ class DecimalToRomanUseCaseTest : FunSpec({
     test("should convert positive decimal strings to Roman numerals") {
         useCase(1) shouldBe "I"
         useCase(23) shouldBe "XXIII"
+        useCase(42) shouldBe "XLII"
         useCase(120) shouldBe "CXX"
         useCase(2025) shouldBe "MMXXV"
     }

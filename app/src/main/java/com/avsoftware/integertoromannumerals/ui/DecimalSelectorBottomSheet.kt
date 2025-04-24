@@ -14,6 +14,7 @@ import androidx.compose.material3.TextField
 import androidx.compose.material3.rememberModalBottomSheetState
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
@@ -43,7 +44,8 @@ fun DecimalSelectorBottomSheet(
                 value = decimalValue.toString(),
                 onValueChange = { intentHandler(RomanUiIntent.UpdateDecimalText(it)) },
                 keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number),
-                modifier = Modifier.fillMaxWidth(),
+                modifier = Modifier.fillMaxWidth()
+                    .testTag("decimal_entry")
             )
             Row(
                 modifier = Modifier.fillMaxWidth(),

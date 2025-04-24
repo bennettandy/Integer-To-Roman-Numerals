@@ -21,6 +21,7 @@ import androidx.compose.material3.rememberModalBottomSheetState
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontWeight
@@ -50,6 +51,7 @@ fun RomanConverter(
 
         Text(
             modifier = Modifier
+                .testTag("decimal_display")
                 .padding(8.dp)
                 .fillMaxWidth()
                 .clickable { intentHandler(RomanUiIntent.ShowBottomSheet) },
@@ -66,7 +68,7 @@ fun RomanConverter(
             text = uiState.romanText,
             color = textColor,
             textAlign = TextAlign.Center,
-            modifier = Modifier.padding(8.dp).fillMaxWidth(),
+            modifier = Modifier.padding(8.dp).fillMaxWidth().testTag("roman_numeral"),
             fontFamily = FontFamily.Serif,
             style = MaterialTheme.typography.displayLarge,
         )

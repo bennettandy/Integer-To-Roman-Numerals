@@ -55,6 +55,8 @@ orbit-viewmodel = { module = "org.orbit-mvi:orbit-viewmodel", version.ref = "orb
 
 ## T
 timber = { module = "com.jakewharton.timber:timber", version.ref = "timber" }
+ui-test-junit4 = { module = "androidx.compose.ui:ui-test-junit4" }
+ui-test-manifest = { module = "androidx.compose.ui:ui-test-manifest" }
 
 
 [plugins]

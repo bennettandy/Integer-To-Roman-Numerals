@@ -7,7 +7,7 @@ import io.kotest.matchers.shouldBe
 class RomanDigitTest : FunSpec({
 
     test("romanDigits list should contain expected entries") {
-        romanDigits.size shouldBe 26 // Number of entries in the list
+        romanDigits.size shouldBe 28 // Number of entries in the list
         romanDigits.take(3).map { it.decimalValue to it.romanDigit } shouldContainExactly listOf(
             1_000_000_000 to "(M)",
             500_000_000 to "(D)",

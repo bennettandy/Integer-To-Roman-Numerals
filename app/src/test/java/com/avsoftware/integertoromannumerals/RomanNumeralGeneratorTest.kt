@@ -27,6 +27,10 @@ class RomanNumeralGeneratorTest {
         )
 
         assertEquals(
+            "XLII", integerToRoman(value = 42)
+        )
+
+        assertEquals(
             "I", integerToRoman(value = 1)
         )
 

@@ -19,6 +19,8 @@ val romanDigits = listOf(
     RomanDigit(500, "D"),               // 500
     RomanDigit(100, "C"),               // 100
     RomanDigit(50, "L"),                // 50
+    RomanDigit(40, "XL"),               // 40
+    RomanDigit(30, "XXL"),              // 30
     RomanDigit(10, "X"),                // 10
     RomanDigit(9, "IX"),                // 9
     RomanDigit(8, "VIII"),              // 8

@@ -74,6 +74,11 @@ dependencies {
     // testing
     //kover(project(":api:api_data"))
 
+    // compose test
+    androidTestImplementation(libs.ui.test.junit4)
+    debugImplementation(libs.ui.test.manifest)
+
+
     testImplementation(libs.junit)
     testImplementation(libs.kotest.runner.junit5)
     androidTestImplementation(libs.androidx.junit)

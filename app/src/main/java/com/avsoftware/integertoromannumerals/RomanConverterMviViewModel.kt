@@ -71,7 +71,8 @@ class RomanConverterMviViewModel @Inject constructor(
                 reduce {
                     state.copy(
                         showBottomSheet = false,
-                        decimal = 0L
+                        decimal = 0L,
+                        romanText = ""
                     )
                 }
             }
