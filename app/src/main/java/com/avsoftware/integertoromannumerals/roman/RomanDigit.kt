@@ -34,7 +34,8 @@ val romanDigits = listOf(
 )
 
 fun integerToRoman(value: Long, acc: String = ""): String {
-    if (value <= 0) return acc.ifEmpty { "0" }
+
+    if (value <= 0L) return acc.ifEmpty { "0" }
 
     val digit = romanDigits.firstOrNull { it.decimalValue <= value }
         ?: throw IllegalArgumentException("Value too large or invalid")
