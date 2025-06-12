@@ -20,6 +20,7 @@ class RomanConverterMviViewModel @Inject constructor(
 
     fun handleIntent(intent: RomanUiIntent) = intent {
         when (intent){
+
             is RomanUiIntent.UpdateDecimalText -> {
                 try {
                     val decimalValue = intent.decimalString.toLong()

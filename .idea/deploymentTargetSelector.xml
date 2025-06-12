@@ -8,13 +8,13 @@
       <SelectionState runConfigName="Tests in 'com.avsoftware.integertoromannumerals'">
         <option name="selectionMode" value="DROPDOWN" />
       </SelectionState>
-      <SelectionState runConfigName="myTest()">
+      <SelectionState runConfigName="testTextFieldInput()">
         <option name="selectionMode" value="DROPDOWN" />
       </SelectionState>
-      <SelectionState runConfigName="mainActivityTest()">
+      <SelectionState runConfigName="testBottomSheetDisplaysCorrectly()">
         <option name="selectionMode" value="DROPDOWN" />
       </SelectionState>
-      <SelectionState runConfigName="RomanNumeralGeneratorTest">
+      <SelectionState runConfigName="testTextFieldInput() (1)">
         <option name="selectionMode" value="DROPDOWN" />
       </SelectionState>
     </selectionStates>

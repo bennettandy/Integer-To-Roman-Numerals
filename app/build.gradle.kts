@@ -46,10 +46,20 @@ android {
             it.useJUnitPlatform()
         }
     }
+    packaging {
+        resources.excludes += setOf(
+            "/META-INF/LICENSE",
+            "/META-INF/LICENSE.md",
+            "/META-INF/LICENSE.txt",
+            "/META-INF/NOTICE",
+            "/META-INF/NOTICE.md",
+            "/META-INF/NOTICE.txt",
+            "/META-INF/LICENSE-notice.md"
+        )
+    }
 }
 
 dependencies {
-
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.lifecycle.runtime.ktx)
     implementation(libs.androidx.activity.compose)
@@ -62,29 +72,33 @@ dependencies {
     // Orbit
     implementation(libs.orbit.core)
     implementation(libs.orbit.viewmodel)
+    implementation(libs.orbit.compose)
 
-
-    // timber
+    // Timber
     implementation(libs.timber)
 
     // Hilt
     implementation(libs.hilt.android)
     ksp(libs.hilt.compiler)
 
-    // testing
-    //kover(project(":api:api_data"))
+    // Immutable Collections
+    implementation(libs.immutable.collections)
 
-    // compose test
-    androidTestImplementation(libs.ui.test.junit4)
-    debugImplementation(libs.ui.test.manifest)
-
-
-    testImplementation(libs.junit)
+    // Unit Tests (JUnit 5 via Kotest)
     testImplementation(libs.kotest.runner.junit5)
-    androidTestImplementation(libs.androidx.junit)
+    // Remove JUnit 4 for unit tests to avoid confusion
+    // testImplementation(libs.junit) // Commented out, as Kotest uses JUnit 5
+
+    // Android Instrumentation Tests (JUnit 4 for Compose)
+    androidTestImplementation(libs.androidx.compose.ui.ui.test.junit4)
+    androidTestImplementation(libs.androidx.core)
+    androidTestImplementation(libs.androidx.junit) 
     androidTestImplementation(libs.androidx.espresso.core)
-    androidTestImplementation(platform(libs.androidx.compose.bom))
-    androidTestImplementation(libs.androidx.ui.test.junit4)
+    androidTestImplementation(libs.mockk.android) {
+        exclude(group = "org.junit")
+    }
+
+    // Debug tools
     debugImplementation(libs.androidx.ui.tooling)
     debugImplementation(libs.androidx.ui.test.manifest)
 }
