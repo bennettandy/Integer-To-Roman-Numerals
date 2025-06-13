@@ -2,11 +2,13 @@ package com.avsoftware.integertoromannumerals
 
 import androidx.compose.ui.test.assertIsDisplayed
 import androidx.compose.ui.test.assertTextEquals
+import androidx.compose.ui.test.junit4.accessibility.enableAccessibilityChecks
 import androidx.compose.ui.test.junit4.createAndroidComposeRule
 import androidx.compose.ui.test.onNodeWithTag
 import androidx.compose.ui.test.onNodeWithText
 import androidx.compose.ui.test.performClick
 import androidx.compose.ui.test.performTextReplacement
+import org.junit.Before
 import org.junit.Rule
 import org.junit.Test
 
@@ -14,6 +16,11 @@ class RomanNumeralGeneratorTest {
 
     @get:Rule
     val composeTestRule = createAndroidComposeRule<MainActivity>()
+
+    @Before
+    fun setUp() {
+        composeTestRule.enableAccessibilityChecks()
+    }
 
     @Test
     fun mainActivityTest() {

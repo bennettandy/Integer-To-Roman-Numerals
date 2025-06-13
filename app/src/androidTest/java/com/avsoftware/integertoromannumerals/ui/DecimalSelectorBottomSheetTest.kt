@@ -1,5 +1,6 @@
 package com.avsoftware.integertoromannumerals.ui
 
+import androidx.compose.ui.test.junit4.accessibility.enableAccessibilityChecks
 import androidx.compose.ui.test.junit4.createComposeRule
 import androidx.compose.ui.test.onNodeWithTag
 import androidx.compose.ui.test.onNodeWithText
@@ -7,9 +8,9 @@ import androidx.compose.ui.test.performClick
 import androidx.compose.ui.test.performTextInput
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import com.avsoftware.integertoromannumerals.RomanUiIntent
-import com.avsoftware.integertoromannumerals.ui.WoodenButton
 import io.mockk.mockk
 import io.mockk.verify
+import org.junit.Before
 import org.junit.Rule
 import org.junit.Test
 import org.junit.runner.RunWith
@@ -23,9 +24,13 @@ class DecimalSelectorBottomSheetTest {
     // mock intent handler for bottom sheet
     private val intentHandler: (RomanUiIntent) -> Unit = mockk(relaxed = true)
 
+    @Before
+    fun setUp() {
+        composeTestRule.enableAccessibilityChecks()
+    }
+
     @Test
     fun testBottomSheetDisplaysCorrectly() {
-        // Set up the composable
         composeTestRule.setContent {
             DecimalSelectorBottomSheet(decimalValue = 42L, intentHandler = intentHandler)
         }
@@ -40,7 +45,6 @@ class DecimalSelectorBottomSheetTest {
 
     @Test
     fun testTextFieldInputTriggersIntent() {
-        // Set up the composable
         composeTestRule.setContent {
             DecimalSelectorBottomSheet(decimalValue = 0L, intentHandler = intentHandler)
         }
@@ -55,7 +59,6 @@ class DecimalSelectorBottomSheetTest {
 
     @Test
     fun testResetButtonTriggersIntent() {
-        // Set up the composable
         composeTestRule.setContent {
             DecimalSelectorBottomSheet(decimalValue = 42L, intentHandler = intentHandler)
         }
@@ -69,7 +72,6 @@ class DecimalSelectorBottomSheetTest {
 
     @Test
     fun testDoneButtonTriggersDismissIntent() {
-        // Set up the composable
         composeTestRule.setContent {
             DecimalSelectorBottomSheet(decimalValue = 42L, intentHandler = intentHandler)
         }
